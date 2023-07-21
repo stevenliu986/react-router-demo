@@ -13,6 +13,13 @@ const A1Box = styled.div`
       display: block;
     }
   }
+
+  .content {
+    width: 300px;
+    height: 300px;
+    background-color: pink;
+    margin-left: 100px;
+  }
 `;
 
 const A = () => {

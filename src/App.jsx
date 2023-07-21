@@ -35,7 +35,7 @@ function App() {
         {/* Switch确保路由中只要有一个匹配，则不再向下匹配。exact：设置匹配模式为精确匹配 */}
         <Switch>
           <Redirect exact from="/" to="/a" />
-          <Route exact path="/a" component={A} />
+          <Route path="/a" component={A} />
           <Route path="/b" component={B} />
           <Route path="/c" component={C} />
           {/* <Route
