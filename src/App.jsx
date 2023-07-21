@@ -24,7 +24,7 @@ function App() {
     <HashRouter>
       {/* 导航部分 */}
       <Nav>
-        <Link to="/">A</Link>
+        <Link to="/a">A</Link>
         <Link to="/b">B</Link>
         <Link to="/c">C</Link>
       </Nav>
@@ -34,29 +34,16 @@ function App() {
       <div className="content">
         {/* Switch确保路由中只要有一个匹配，则不再向下匹配。exact：设置匹配模式为精确匹配 */}
         <Switch>
-          <Route exact path="/" component={A} />
+          <Redirect exact from="/" to="/a" />
+          <Route exact path="/a" component={A} />
           <Route path="/b" component={B} />
           <Route path="/c" component={C} />
-          <Route
-            path="/d"
-            render={() => {
-              /* 
-                当路由匹配后，先执行render函数，返回的就是我们要渲染的组件，在此函数中可以写一些逻辑，
-                如：登录状态检测等 
-              */
-              let isLogin = true;
-              if (isLogin) {
-                return <C />;
-              }
-              return <Redirect to="/login" />;
-            }}
-          />
           {/* path设置为“*”或不写表示上述都不匹配，则执行这个规则
           <Route path="*" component={404页面} /> 
           <Redirect from="" to="/" exact/>
           from: 从哪个地址来，to：重定向的地址，exact：开启精确匹配
           */}
-          <Redirect />
+          <Redirect to="/a" />
         </Switch>
       </div>
     </HashRouter>
