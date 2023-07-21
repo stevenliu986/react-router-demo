@@ -38,6 +38,21 @@ function App() {
           <Route exact path="/a" component={A} />
           <Route path="/b" component={B} />
           <Route path="/c" component={C} />
+          {/* <Route
+            path="/d"
+            render={() => {
+    
+                当路由匹配后，先执行render函数，返回的就是我们要渲染的组件，在此函数中可以写一些逻辑，
+                如：登录状态检测等 
+              
+              let isLogin = true;
+              if (isLogin) {
+                return <C />;
+              }
+              return <Redirect to="/a" />;
+            }}
+          /> */}
+
           {/* path设置为“*”或不写表示上述都不匹配，则执行这个规则
           <Route path="*" component={404页面} /> 
           <Redirect from="" to="/" exact/>
