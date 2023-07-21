@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, Redirect, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import A1 from "./a/A1";
-import A2 from "./a/A2";
-import A3 from "./a/A3";
+import RouterView from "../router";
+import routes from "../router/aRoutes";
 
 const A1Box = styled.div`
   display: flex;
@@ -31,13 +30,7 @@ const A = () => {
         <Link to="/a/a3">A3</Link>
       </div>
       <div className="content">
-        {/* 配置二级路由的匹配规则，需要把一组路由地址带上，不能省略 */}
-        <Switch>
-          <Redirect exact from="/a" to="/a/a1" />
-          <Route exact path="/a/a1" component={A1} />
-          <Route path="/a/a2" component={A2} />
-          <Route path="/a/a3" component={A3} />
-        </Switch>
+        <RouterView routes={routes} />
       </div>
     </A1Box>
   );

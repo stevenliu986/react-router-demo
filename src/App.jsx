@@ -1,8 +1,8 @@
-import { HashRouter, Link, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Link } from "react-router-dom";
 import styled from "styled-components";
-import A from "./views/A";
-import B from "./views/B";
-import C from "./views/C";
+import RouteView from "./router";
+import routes from "./router/routes";
+
 function App() {
   const Nav = styled.nav`
     margin: 50px auto;
@@ -32,34 +32,7 @@ function App() {
       {/* 路由容器：每一次页面加载或路由切换完毕，都会根据当前的哈希值和每一个Route进行匹配，
       将匹配到的组件放到容器中渲染 */}
       <div className="content">
-        {/* Switch确保路由中只要有一个匹配，则不再向下匹配。exact：设置匹配模式为精确匹配 */}
-        <Switch>
-          <Redirect exact from="/" to="/a" />
-          <Route path="/a" component={A} />
-          <Route path="/b" component={B} />
-          <Route path="/c" component={C} />
-          {/* <Route
-            path="/d"
-            render={() => {
-    
-                当路由匹配后，先执行render函数，返回的就是我们要渲染的组件，在此函数中可以写一些逻辑，
-                如：登录状态检测等 
-              
-              let isLogin = true;
-              if (isLogin) {
-                return <C />;
-              }
-              return <Redirect to="/a" />;
-            }}
-          /> */}
-
-          {/* path设置为“*”或不写表示上述都不匹配，则执行这个规则
-          <Route path="*" component={404页面} /> 
-          <Redirect from="" to="/" exact/>
-          from: 从哪个地址来，to：重定向的地址，exact：开启精确匹配
-          */}
-          <Redirect to="/a" />
-        </Switch>
+        <RouteView routes={routes} />
       </div>
     </HashRouter>
   );
