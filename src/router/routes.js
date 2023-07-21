@@ -14,6 +14,7 @@
 import A from "../views/A";
 import B from "../views/B";
 import C from "../views/C";
+import aRoutes from "./aRoutes";
 
 // 一级路由表
 const routes = [
@@ -28,6 +29,7 @@ const routes = [
     name: "a",
     component: A,
     meta: {},
+    children: aRoutes,
   },
   {
     path: "/b",
@@ -40,6 +42,10 @@ const routes = [
     name: "c",
     component: C,
     meta: {},
+  },
+  {
+    redirect: true,
+    to: "/",
   },
 ];
 export default routes;
